@@ -1,6 +1,6 @@
 package com.aston_org.mainservice.controller;
 
-import com.aston_org.mainservice.dto.StubDto;
+import aston_org.example.stubservice.dto.StubDto;
 import com.aston_org.mainservice.entity.Example;
 import com.aston_org.mainservice.service.ExampleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -64,4 +64,5 @@ public class ExampleController {
     public StubDto getStubMessage() {
         return exampleService.getStubMessage();
     }
+
 }

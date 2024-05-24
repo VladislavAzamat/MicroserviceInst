@@ -1,5 +1,6 @@
 package aston_org.example.stubservice.controller;
 
+//import aston_org.example.stubservice.dto.StubDto;
 import aston_org.example.stubservice.dto.StubDto;
 import aston_org.example.stubservice.service.StubService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -31,4 +32,9 @@ public class StubController {
     public StubDto getStubMessage() {
         return stubService.getStubMessage();
     }
+//    @GetMapping
+//    public String getStubMessage() {
+//        return stubService.getStubMessage();
+//    }
+
 }
