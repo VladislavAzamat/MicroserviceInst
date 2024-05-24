@@ -5,6 +5,7 @@ import aston_org.example.stubservice.dto.StubDto;
 import com.aston_org.mainservice.entity.Example;
 import com.aston_org.mainservice.mapper.StubMapper;
 import com.aston_org.mainservice.repository.ExampleRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -35,6 +36,7 @@ public class ExampleService {
         return exampleRepository.findById(id).orElse(null);
     }
 
+    @Scheduled(fixedRate = 2000)
     public  StubDto getStubMessage() {
         StubDto incomingStub = restTemplate.getForObject("http://localhost:8081/api/stub", StubDto.class);
         exampleRepository.save(stubMapper.stubDtoToExample(incomingStub));

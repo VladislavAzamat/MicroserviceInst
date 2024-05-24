@@ -2,6 +2,8 @@ package com.aston_org.mainservice.entity;
 import jakarta.persistence.*;
 import lombok.Builder;
 
+import java.time.Instant;
+
 @Entity
 @Table(name = "example")
 public class Example {
@@ -11,6 +13,15 @@ public class Example {
     private Long id;
     @Column(nullable = false)
     private String name;
+    @Column(nullable = false, name = "received_at")
+    private Instant time;
+
+    public Instant getTime() {
+        return time;
+    }
+    public void setTime(Instant time) {
+        this.time = time;
+    }
     public Long getId() {
         return id;
     }

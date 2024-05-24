@@ -19,3 +19,8 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
+              - column:
+                  name: received_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false
