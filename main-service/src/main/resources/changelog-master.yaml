@@ -1,0 +1,21 @@
+databaseChangeLog:
+
+  - changeSet:
+      id: 1
+      author: csa21472001
+
+      changes:
+        - createTable:
+            tableName: example
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+                  constraints:
+                    nullable: false

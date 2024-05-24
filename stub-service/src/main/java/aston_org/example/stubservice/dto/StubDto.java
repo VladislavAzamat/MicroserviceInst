@@ -1,17 +1,10 @@
-package aston_org.example.stubservice.entity;
-import jakarta.persistence.*;
+package aston_org.example.stubservice.dto;
 
-@Entity
-@Table(name = "stub")
-public class Stub {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class StubDto {
     private Long id;
-
-    @Column(nullable = false)
     private String message;
 
+    // Getters and setters
     public Long getId() {
         return id;
     }
