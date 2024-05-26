@@ -4,7 +4,6 @@ public class StubDto {
     private Long id;
     private String message;
 
-    // Getters and setters
     public Long getId() {
         return id;
     }

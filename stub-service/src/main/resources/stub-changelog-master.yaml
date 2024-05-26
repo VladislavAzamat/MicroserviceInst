@@ -1,11 +1,13 @@
 databaseChangeLog:
+
   - changeSet:
-      id: 2
+      id: 1
       author: csa21472001
 
       changes:
         - createTable:
             tableName: stub
+            schemaName: public
             columns:
               - column:
                   name: id
@@ -13,8 +15,14 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
+                    unique: true
               - column:
-                  name: message
+                  name: name
                   type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: received_at
+                  type: timestamp with time zone
                   constraints:
                     nullable: false

@@ -12,7 +12,7 @@ public class StubService {
 
         StubDto stubDto = new StubDto();
         stubDto.setId(id);
-        stubDto.setMessage("This is a STUB!!!!! ");
+        stubDto.setMessage("This is a STUB!!!!!");
         return stubDto;
     }
 

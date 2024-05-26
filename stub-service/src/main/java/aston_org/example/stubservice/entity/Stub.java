@@ -1,4 +1,5 @@
 package aston_org.example.stubservice.entity;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -8,7 +9,6 @@ public class Stub {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private String message;
 

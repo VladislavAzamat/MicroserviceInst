@@ -8,14 +8,13 @@ import org.mapstruct.MappingTarget;
 import org.springframework.stereotype.Component;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 
 
 @Mapper(componentModel = "spring")
 @Component
 public abstract class StubMapper {
 
-    @Mapping(source = "message", target = "name")
+    @Mapping(target = "name", source = "message" )
     @Mapping(target = "id", constant = "1L" )
     public abstract Example stubDtoToExample(StubDto stubDto);
 

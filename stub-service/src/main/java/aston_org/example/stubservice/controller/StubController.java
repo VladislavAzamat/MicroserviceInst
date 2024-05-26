@@ -32,9 +32,6 @@ public class StubController {
     public StubDto getStubMessage() {
         return stubService.getStubMessage();
     }
-//    @GetMapping
-//    public String getStubMessage() {
-//        return stubService.getStubMessage();
-//    }
+
 
 }

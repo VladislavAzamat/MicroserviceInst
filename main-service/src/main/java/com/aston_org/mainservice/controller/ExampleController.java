@@ -3,10 +3,13 @@ package com.aston_org.mainservice.controller;
 import aston_org.example.stubservice.dto.StubDto;
 import com.aston_org.mainservice.entity.Example;
 import com.aston_org.mainservice.service.ExampleService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +25,7 @@ public class ExampleController {
 
     public ExampleController(ExampleService exampleService) {
         this.exampleService = exampleService;
+
     }
 
     @Operation(summary = "View a list of available examples", description = "Provides a list of all available examples")
@@ -36,12 +40,14 @@ public class ExampleController {
 
     @Operation(summary = "Add an example", description = "Adds a new example")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully added example"),
+            @ApiResponse(responseCode = "201", description = "Successfully added example"),
+            @ApiResponse(responseCode = "400", description = "Invalid data"),
             @ApiResponse(responseCode = "500", description = "Internal server error")
     })
     @PostMapping
-    public Example createExample(@RequestBody Example example) {
-        return exampleService.saveExample(example);
+    public ResponseEntity<Example> createExample(@RequestBody Example example) {
+        Example savedExample = exampleService.saveExample(example);
+        return new ResponseEntity<>(savedExample, HttpStatus.CREATED);
     }
 
     @Operation(summary = "Get an example by Id", description = "Gets the details of an example by its Id")

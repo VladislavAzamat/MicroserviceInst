@@ -10,8 +10,12 @@
     </parent>
 
     <artifactId>stub-service</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <dependencies>
-
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-test-autoconfigure</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 </project>
