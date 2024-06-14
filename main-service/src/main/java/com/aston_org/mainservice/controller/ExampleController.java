@@ -3,7 +3,6 @@ package com.aston_org.mainservice.controller;
 import aston_org.example.stubservice.dto.StubDto;
 import com.aston_org.mainservice.entity.Example;
 import com.aston_org.mainservice.service.ExampleService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -25,7 +24,6 @@ public class ExampleController {
 
     public ExampleController(ExampleService exampleService) {
         this.exampleService = exampleService;
-
     }
 
     @Operation(summary = "View a list of available examples", description = "Provides a list of all available examples")
