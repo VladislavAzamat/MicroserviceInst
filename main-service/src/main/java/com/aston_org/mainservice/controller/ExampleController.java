@@ -1,6 +1,5 @@
 package com.aston_org.mainservice.controller;
 
-import aston_org.example.stubservice.dto.StubDto;
 import com.aston_org.mainservice.entity.Example;
 import com.aston_org.mainservice.service.ExampleService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -59,14 +58,14 @@ public class ExampleController {
         return exampleService.getExampleById(id);
     }
 
-    @Operation(summary = "Get stub message", description = "Gets a message from the stub service")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Successfully retrieved message from stub service"),
-            @ApiResponse(responseCode = "500", description = "Internal server error")
-    })
-    @GetMapping("/stub")
-    public StubDto getStubMessage() {
-        return exampleService.getStubMessage();
-    }
+//    @Operation(summary = "Get stub message", description = "Gets a message from the stub service")
+//    @ApiResponses(value = {
+//            @ApiResponse(responseCode = "200", description = "Successfully retrieved message from stub service"),
+//            @ApiResponse(responseCode = "500", description = "Internal server error")
+//    })
+//    @GetMapping("/stub")
+//    public StubDto getStubMessage() {
+//        return exampleService.getStubMessage();
+//    }
 
 }

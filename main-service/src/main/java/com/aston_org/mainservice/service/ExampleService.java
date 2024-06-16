@@ -6,9 +6,8 @@ import com.aston_org.mainservice.entity.Example;
 import com.aston_org.mainservice.exception.InvalidDataException;
 import com.aston_org.mainservice.mapper.StubMapper;
 import com.aston_org.mainservice.repository.ExampleRepository;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 
@@ -17,11 +16,11 @@ public class ExampleService {
 
     private final StubMapper stubMapper;
     private final ExampleRepository exampleRepository;
-    private final RestTemplate restTemplate;
+//    private final RestTemplate restTemplate;
 
-    public ExampleService(ExampleRepository exampleRepository, RestTemplate restTemplate, StubMapper stubMapper) {
+    public ExampleService(ExampleRepository exampleRepository, StubMapper stubMapper) {
         this.exampleRepository = exampleRepository;
-        this.restTemplate = restTemplate;
+//        this.restTemplate = restTemplate;
         this.stubMapper = stubMapper;
     }
 
@@ -39,11 +38,12 @@ public class ExampleService {
         return exampleRepository.findById(id).orElseThrow(() -> new RuntimeException("No entity wit specified id!!!"));
     }
 
-    @Scheduled(fixedRate = 2000)
-    public  StubDto getStubMessage() {
-        StubDto incomingStub = restTemplate.getForObject("http://localhost:8081/api/stub", StubDto.class);
-        exampleRepository.save(stubMapper.stubDtoToExample(incomingStub));
-        return incomingStub;
+//    @Scheduled(fixedRate = 2000)
+    @KafkaListener (topics = "example_topic", groupId = "example_group")
+    public  void getStubMessage(StubDto stubDto) {
+//        StubDto incomingStub = restTemplate.getForObject("http://localhost:8081/api/stub", StubDto.class);
+        exampleRepository.save(stubMapper.stubDtoToExample(stubDto));
+        System.out.println("Consumed message: " + stubDto.getMessage());
     }
     private boolean isValid(Example example) {
         return example != null && example.getName() != null && !example.getName().isEmpty() && example.getTime() != null;
